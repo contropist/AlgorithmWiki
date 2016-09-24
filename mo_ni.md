@@ -8,3 +8,90 @@
 - 想做好模拟题，需要有活跃的思维和对数据结构等知识的扎实的掌握，基础很重要！
 - 有一些模拟题是可以通过刷题来锻炼出来解题能力的，不过太难的模拟题不推荐大家浪费太多时间在上面。
 - 有一些模拟题，看似没有什么算法，很简单，但是会卡时间，需要大家想一下如何优化，所以大家不要盲目的去解决模拟题。
+
+## 例题
+### 例题1 poj 1068
+**题意**：对于给出的原括号串，存在两种数字密码串：
+1.p序列：当出现匹配括号对时，从该括号对的右括号开始往左数，直到最前面的左括号数，就是pi的值。
+2.w序列：当出现匹配括号对时，包含在该括号对中的所有右括号数（包括该括号对）,就是wi的值。
+对给出的p数字串，求出对应的s串。串长限制均为20。
+**要求**：Time Limit: 1000 MS , Memory Limit: 10000 K
+**思路**：清楚了题意后，这道题并不是很难，直接模拟就行了，在小优的博客上学到了一个小技巧，和大家分享一下：在处理括号序列时可以把括号序列转化为01序列，左0右1，处理时比较方便
+**参考出处**：http://user.qzone.qq.com/289065406/blog/1299127551
+
+```cpp
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+int main(void)
+{
+    int p[21]={0};
+    int w[20];
+    int str[40];
+    int n;
+
+    int cases;
+    cin>>cases;
+    while(cases--)
+    {
+        memset(str,0,sizeof(str));
+        cin>>n;
+        int i,j,k;
+        for(i=1;i<=n;i++)
+            cin>>p[i];
+        for(j=0,i=1;i<=n;i++)
+            for(k=0;;k++)
+                if(k<p[i]-p[i-1])
+                    j++;
+                else if(k==p[i]-p[i-1])
+                {
+                    str[j++]=1;
+                    break;
+                }
+        const int length=j;
+        int count;
+        for(i=0;i<length;i++)
+            if(str[i]==1)
+            {
+                count=2;
+                for(j=i-1;;j--)
+                {
+                    if(str[j]==0)
+                    {
+                        str[i]=str[j]='F';
+                        break;
+                    }
+                    else
+                        count++;
+                }
+                cout<<count/2<<' ';
+            }
+        cout<<endl;
+    }
+    return 0;
+}
+```
+### 例题2 hrbust 2085
+**题意**：给你一个数字 n 让你输出囧字的迭代
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
