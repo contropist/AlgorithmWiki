@@ -1,2 +1,3 @@
-# AlgorithmWiki
-AlgorithmWiki
+# Algorithm Wiki
+
+Algorithm Wiki
