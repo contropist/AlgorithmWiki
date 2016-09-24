@@ -74,7 +74,7 @@ int main(void)
 ```
 ### 例题2 hrbust 2085
 **题意**：给你一个数字 n 让你输出囧字的迭代
-<center>![](jiong.PNG)</center>
+<center>![](jiong.PNG)<\center>
 
 
 
