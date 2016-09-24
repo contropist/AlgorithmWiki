@@ -75,6 +75,7 @@ int main(void)
 ### 例题2 hrbust 2085
 **题意**：给你一个数字 n 让你输出囧字的迭代
 <center>![](jiong.PNG)<center>
+
 **思路**：这是一类经典的模拟题，迭代画图，我们考虑好这个囧字的迭代结构，给定一个n，从最外侧的囧字向内部构造即可，具体看代码。
 ```cpp
 #include <iostream>
