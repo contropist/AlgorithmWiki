@@ -74,7 +74,57 @@ int main(void)
 ```
 ### 例题2 hrbust 2085
 **题意**：给你一个数字 n 让你输出囧字的迭代
-<center>![](jiong.PNG)<\center>
+<center>![](jiong.PNG)<center>
+**思路**：这是一类经典的模拟题，迭代画图，我们考虑好这个囧字的迭代结构，给定一个n，从最外侧的囧字向内部构造即可，具体看代码。
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+#define MAXN 1000
+using namespace std;
+
+void draw(const int n, char map[][MAXN], const int r, const int c) //从最大的向里面构造
+{
+    int size = (1 << (n+2));
+    map[r][c] = map[r+size-1][c+size-1] = map[r][c+size-1] = map[r+size-1][c] = '+'; //构造四个角落
+    for(int i=1; i<size-1; i++) //构造外边框
+    {
+        map[r][c+i] = map[r+size-1][c+i] = '-';
+        map[r+i][c] = map[r+i][c+size-1] = '|';
+    }
+    if(n == 0) return ;
+    for(int i=2; i<size/2-1; i++)   //构造内部
+    {
+        map[r+i][c+size/2-i] = '/';
+        map[r+i][c+size/2+i-1] = '\\';
+    }
+    draw(n-1, map, r+size/2, c+size/4);  //迭代
+}
+
+int main()
+{
+    int cas, n;
+    scanf("%d", &cas);
+    while(cas--)
+    {
+        static char map[MAXN][MAXN];
+        scanf("%d", &n);
+        memset(map, ' ', sizeof(map));
+        draw(n, map, 0, 0);
+        int size = (1 << (n+2));
+        for(int i=0; i<size; i++)
+        {
+            for(int j=0; j<size; j++) putchar(map[i][j]);
+            putchar(10);
+        }
+    }
+    return 0;
+}
+```
+
+
+
 
 
 
